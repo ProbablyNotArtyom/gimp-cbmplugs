@@ -33,7 +33,7 @@
 					GimpParam **return_vals)
 #endif
 
-enum {
+static enum {
 	KOALA = 0x0,
 	ADVOCP,
 	OCP,
