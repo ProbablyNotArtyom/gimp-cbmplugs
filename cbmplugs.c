@@ -1,6 +1,6 @@
 /* cbmplugs -- Plugins to enable handling of Commodore 64 images in The GIMP
  *
- * Copyright (C) 2002-2006 David Weinehall <tao@acc.umu.se>
+ * Copyright © 2002-2007 David Weinehall <tao@acc.umu.se>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,6 +17,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
  */
 
+#include <math.h>
 #include <stdio.h>
 #include <libgimp/gimp.h>
 
@@ -1113,34 +1114,67 @@ static gint32 bitmap_to_gimp(guint8 type)
 	return image_ID;
 }
 
+/* This section written by Vanessa Ezekowitz, cleaned up by Shadewalker
+ * Here we get GIMP's background colour, look up the closest match in
+ * the VIC-II colour palette, and return the index to that colour.
+ * This replaces the old routine that counts colours to determine what
+ * should have been the background colour.
+ */
 static gint8 get_bgcol(gint line, guint8 type)
 {
-	gint col[16][2];
-	gint x, y;
+	guint8 colour_index;
+	guint8 x, bg_red, bg_green, bg_blue;
+	guint8 colour_r, colour_g, colour_b;
+	gfloat min_d, d;
+
+	GimpRGB bgcolour;
+
+	if (!gimp_context_get_background(&bgcolour))
+		return 0;
+
+	printf("bg colour is (%f, %f, %f).\n",
+	       bgcolour.r, bgcolour.g, bgcolour.b);
+
+	min_d = 99999999; /* insanely high to make sure d is never higher. */
+	colour_index = 0;
+
+	/* Convert floating 0 <= x <= 1 values to normal 8-bit ranges
+	 * the 0.5 being added forces rounding (normally, it truncates)
+	 */
+	bg_red = bgcolour.r * 255 + 0.5;
+	bg_green = bgcolour.g * 255 + 0.5;
+	bg_blue = bgcolour.b * 255 + 0.5;
+
+	printf("in 8-bit notation, (%u, %u, %u).\n",
+	       bg_red, bg_green, bg_blue);
 
 	for (x = 0; x < 16; x++) {
-		col[x][0] = x;
-		col[x][1] = 0;
+		colour_r = vicpalette[x * 3];
+		colour_g = vicpalette[x * 3 + 1];
+		colour_b = vicpalette[x * 3 + 2];
+
+		d = sqrt(pow((bg_red - colour_r), 2) +
+		    pow((bg_green - colour_g), 2) +
+		    pow((bg_blue - colour_b), 2) );
+
+		printf("Checked colour %u = %u, %u, %u.  Error is %f.\n",
+		       x, colour_r, colour_g, colour_b, d);
+
+		if (d < min_d) {
+			min_d = d;
+			colour_index = x;
+		}
 	}
 
-	/* Create colour statistics:
-	 * For FLI we only need to check the 24 first pixels,
-	 * since those can only hold the background colour
-	 * dark brown or light gray, nothing else
-	 */
-	for (y = (type == FLI ? line : 0); y <= (type == FLI ? line : 199); y++)
-		for (x = 0; x < (type == FLI ? 24 : 320); x++)
-			col[(guint8)buf[x + y * 320]][1]++;
+	printf("Closest match is %u.\n\n", colour_index);
 
-	colsort(16);
-
-	return col[0][0];
+	return colour_index;
 }
 
 static gboolean get_fgcols(gint8 *col0, gint8 *col1, gint8 *col2,
 			   guint8 type, guint x, guint y, guint8 line)
 {
-	gint8 tcol[8][4];
+	guint8 tcol[8][4];
 	guint8 i, j;
 	guint16 cbits[8];
 	guint8 tmp;
@@ -1149,10 +1183,10 @@ static gboolean get_fgcols(gint8 *col0, gint8 *col1, gint8 *col2,
 		return TRUE;
 
 	for (i = 0; i < 8; i++) {
-		tcol[i][0] = 0;
-		tcol[i][1] = 0x10;
-		tcol[i][2] = 0x10;
-		tcol[i][3] = 0x10;
+		tcol[i][0] = 0;		/* colour counter */
+		tcol[i][1] = 0x10;	/* fg 1 */
+		tcol[i][2] = 0x10;	/* fg 2 */
+		tcol[i][3] = 0x10;	/* colram */
 		cbits[i] = 0;
 	}
 
@@ -1847,7 +1881,7 @@ static gint gimp_to_bitmap(gint32 image_ID, guint8 type)
 							       &col2, type,
 							       x, y, i)) {
 						gimp_message("Too many colours in a 4x8 block. Aborting.");
-						printf("x: %d, y: %d\n", x, y);
+						printf("x: %d (%d), y: %d (%d)\n", x, x * 8, y, y * 8 + i);
 						return -1;
 					}
 

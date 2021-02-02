@@ -1,10 +1,10 @@
 /* cbmplugs -- Plugins to enable handling of Commodore 64 images in The GIMP
  *
- * Copyright (C) 2002-2006 David Weinehall <tao@acc.umu.se>
+ * Copyright © 2002-2007 David Weinehall <tao@acc.umu.se>
  *
  * These plugins are based off of work
  *
- * Copyright (C) 1999 Maurits Rijk <lpeek.mrijk@consunet.nl>
+ * Copyright © 1999 Maurits Rijk <lpeek.mrijk@consunet.nl>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -30,7 +30,9 @@ _runheader
 {
 	static GimpParam values[2];
 	GimpRunMode run_mode;
+#if 0
 	gint32 image_ID;
+#endif
 
 	*nreturn_vals = 1;
 	*return_vals = values;

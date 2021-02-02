@@ -1,3 +1,31 @@
+2009-12-01  David Weinehall  <tao@acc.umu.se>
+
+	* Release 1.2.2.
+	* Makefile: Apply build fix by Tzafrir Cohen to use pkgconfig
+	  instead of gimptool.
+	  | Thanks!
+	* Makefile: Properly link against libm
+	  | Thanks to Peter Fritzsche for reporting!
+	* Makefile: Drop support for The GIMP v1.2.
+	* Makefile: Update tar ignores.
+	* ChangeLog: Corrected typos.
+	* README: Update to cover the fact that we no longer support
+	  The GIMP v1.2.
+	* hws.c: Comment out image_ID, since it's not used at the moment
+
+2007-06-19  David Weinehall  <tao@acc.umu.se>
+
+	* Release 1.2.1.
+
+2007-06-19  David Weinehall  <tao@acc.umu.se>
+
+	* Makefile: Fix local install/uninstall targets.
+	* DTV.gpl: Added a DTV v3 palette, shamelessly taken from
+	  David Murray's DTV homepage.
+	* cbmplugs.c: Apply patch from Vanessa Ezekowitz to fix background
+	  colour handling.
+	  | Thanks!
+
 2005-06-04  David Weinehall  <tao@acc.umu.se>
 
 	* Release 1.2.0.

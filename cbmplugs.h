@@ -1,6 +1,6 @@
 /* cbmplugs -- Plugins to enable handling of Commodore 64 images in The GIMP
  *
- * Copyright (C) 2002-2006 David Weinehall <tao@acc.umu.se>
+ * Copyright © 2002-2007 David Weinehall <tao@acc.umu.se>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@
 					GimpParam **return_vals)
 #endif
 
-static enum {
+enum {
 	KOALA = 0x0,
 	ADVOCP,
 	OCP,
