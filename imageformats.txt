@@ -1,0 +1,482 @@
+The following image-formats are supported:
+
+Advanced Art Studio:
+       support: read/write
+	plugin: advartstudio
+	  mode: multi
+	suffix: .mpic
+     64-suffix: mpic
+	blocks: 40
+	 bytes: 2000-471f
+	format:
+		2000-3f3f: bitmap
+		3f40-4327: mcolour
+		     4328: background
+		4329-4337: padding
+		4338-471f: colour
+
+
+AFLI:
+       support: read/write
+	plugin: afli
+	  mode: hires
+	suffix: .afli
+     64-suffix: N/A
+        blocks: 65
+	 bytes: 4000-7fff
+	format:
+		4000-43e7: mcolour 0
+		43e8-43ff: padding
+		4400-47e7: mcolour 1
+		47e8-47ff: padding
+		4800-4be7: mcolour 2
+		4be8-4bff: padding
+		4c00-4fe7: mcolour 3
+		4fe8-4fff: padding
+		5000-53e7: mcolour 4
+		53e8-53ff: padding
+		5400-57e7: mcolour 5
+		57e8-57ff: padding
+		5800-5be7: mcolour 6
+		5be8-5bff: padding
+		5c00-5fe7: mcolour 7
+		5fe8-5fff: padding
+		6000-7f40: bitmap
+		7f40-7fff: padding
+
+
+Artist 64:
+       support: read/write
+	plugin: artist64
+	  mode: multi
+	suffix: .a64
+     64-prefix: p-
+	blocks: 41
+	 bytes: 4000-67ff
+	format:
+		4000-5f3f: bitmap
+		5f40-5fff: padding
+		6000-63e7: mcolour
+		63e8-63ff: padding
+		6400-67e7: colour
+		67e8-67fe: padding
+		     67ff: background
+
+
+Art Studio:
+       support: read/write
+	plugin: artstudio
+	  mode: hires
+	suffix: .ocp
+     64-suffix: pic
+	blocks: 36
+	 bytes: 2000-4327
+	format:
+		2000-3f3f: bitmap
+		3f40-4327: mcolour
+
+
+Blazing Paddles:
+       support: read/write
+	plugin: bpaddles
+	  mode: multi
+	suffix: .bpi
+     64-prefix: pi.
+	blocks: 41
+	 bytes: a000-c7ff
+	format:
+		a000-bf3f: bitmap
+		bf40-bfff: padding
+		c000-c3e7: mcolour
+		c3e8-c3ff: padding
+		c400-c7e7: colour
+		c7e8-c7ff: padding
+
+
+Drazpaint:
+       support: read/write
+        plugin: drazpaint
+	  mode: multi
+	suffix: .dp64
+     64-suffix: N/A
+        blocks: 40
+	 bytes: 5800-7f40
+	format:
+		5800-5be7: colour
+		5be8-5bfe: padding
+		5c00-5fe7: mcolour
+		5fe8-5fff: padding
+		6000-7f3f: bitmap
+		     7f40: background
+		     7f41: padding
+	 
+
+EAFLI:
+       support: read
+        plugin: eafli
+	  mode: hires + sprites
+	suffix: .eafli
+     64-prefix: -.
+	blocks: 47
+	 bytes: 8000-adbf
+	format: 
+		8000-81bf mcolour0
+		81c0-83bf spriterow0
+		83c0-83ff padding
+		8400-85bf mcolour1
+		85c0-87bf spriterow1
+		83c0-83ff padding
+		8800-89bf mcolour2
+		89c0-8bbf spriterow2
+		8bc0-8bff padding
+		8c00-8dbf mcolour3
+		8dc0-8fbf spriterow3
+		8fc0-8fff padding
+		9000-91bf mcolour4
+		91c0-93ff padding
+		9400-95bf mcolour5
+		95c0-97ff padding
+		9800-99bf mcolour6
+		99c0-9bff padding
+		9c00-9dbf mcolour7
+		9dc0-9fff padding
+		a000-adbf bitmap
+
+		     81ff sprite 1-7 colour
+		     823f sprite 0 colour 1
+		     827f sprite 0 colour 2
+		     82bf sprite 0 colour 0
+		     82ff hires or multicolour for sprite 0 (1 = multi)
+
+		
+FLI:
+       support: read/write
+	plugin: fli64
+	  mode: multi
+	suffix: .fli64
+     64-suffix: N/A
+        blocks: 69
+	 bytes: 3b00/3c00-7f3f/7fff
+	format:
+		3b00-3bc7: bgcolour
+			Interleave
+			18-0	(line % 8 == 0)
+			31-19	(line % 8 == 1)
+			4a-32	(line % 8 == 2)
+			63-4b	(line % 8 == 3)
+			7c-64	(line % 8 == 4)
+			95-7d	(line % 8 == 5)
+			ae-96	(line % 8 == 6)
+			c7-af	(line % 8 == 7)
+		3bc8-3bff: padding
+		3c00-3fe7: colour
+		3fe8-3fff: padding
+		4000-43e7: mcolour 0
+		43e8-43ff: padding
+		4400-47e7: mcolour 1
+		47e8-47ff: padding
+		4800-4be7: mcolour 2
+		4be8-4bff: padding
+		4c00-4fe7: mcolour 3
+		4fe8-4fff: padding
+		5000-53e7: mcolour 4
+		53e8-53ff: padding
+		5400-57e7: mcolour 5
+		57e8-57ff: padding
+		5800-5be7: mcolour 6
+		5be8-5bff: padding
+		5c00-5fe7: mcolour 7
+		5fe8-5fff: padding
+		6000-7f3f: bitmap
+		(7f40-7fff: padding)
+
+
+Image System:
+       support: read/write
+	plugin: imagesystem64
+	  mode: multi
+	suffix: .64i
+     64-prefix: ms.
+	blocks: 41
+	 bytes: 3c00-63e7
+	format:
+		3c00-3fe7: colour
+		3fe8-3fff: padding
+		4000-5f3f: bitmap
+		5f40-5fff: padding
+		6000-63e7: mcolour
+
+
+Interpaint Hires:
+       support: read/write
+	plugin: interpainthires
+	  mode: hires
+	suffix: .ip64h
+     64-suffix: .hres
+	blocks: 36
+	 bytes: 4000-6327
+	format:
+		4000-5f3f: bitmap
+		5f40-6327: mcolour
+
+
+Interpaint Lores:
+       support: read/write
+	plugin: interpaintlores
+	  mode: multi
+	suffix: .ip64l
+     64-suffix: .lres
+	blocks: 40
+	 bytes: 4000-6710
+	format:
+		4000-5f3f: bitmap
+		5f40-6327: mcolour
+		6328-670f: colour
+		     6710: background
+
+
+Koala Painter:
+       support: read/write
+	plugin: koala
+	  mode: multi
+	suffix: .koa
+     64-prefix: [reverse shift + a]pic[space]
+	blocks: 40
+	 bytes: 6000-8710
+	format:
+		6000-7f3f: bitmap
+		7f40-8327: mcolour
+		8328-870f: colour
+		     8710: background
+
+
+Rain:
+       support: read
+	plugin: rain
+	  mode: hires charmap + sprites
+	suffix: .rain
+     64-prefix: N/A
+	blocks: 33
+	 bytes: 4000-5fff
+	format:
+		4000-43e7 col1 screenmap 1
+			00 10 ... f0 ff ...
+			01 11 ... f1 ff ...
+			...
+			0f 1f ... ff ff ...
+		43e8-43ef padding
+		43f0-43f3 "RAIN"
+		     43f4 col2
+		     43f5 col1
+		     43f6 col0
+		     43f7 bgcol
+		43f8-43ff spriteptrs
+		4400-43e7 col0 screenmap 2
+			00 10 ... f0
+			01 11 ... f1
+			...
+			0f 1f ... ff
+		47e8-47f7 padding
+		47f8-47ff spriteptrs
+		4800-4fff: col0 (dark gray) charmap
+		5000-59ff: col1 (medium gray) sprites
+				Rather complex; refer to cbmplugs.h
+		5a00-5fff: col2 (light gray) sprites
+				Rather complex; refer to cbmplugs.h
+   limitations:
+  		no bgcol + col2 nibbles
+		no col1 on the first 4 and last 4 pixels each line
+		no col1 or col2 on the first and last line
+  
+
+SHFLI:
+       support: read
+        plugin: shfli
+	  mode: hires + sprites
+	suffix: .shfli
+     64-suffix: .unp
+	blocks: 63
+	 bytes: 4000-7e00
+	format: 
+		400e-401f + 28 * n (n = 0..14) mcolour0
+		4348-43e7 padding
+		     43e8 sprite layer 0 colour
+		     43e9 sprite layer 1 colour
+		43ea-43f7 padding
+		43f8-43ff spritepointer page 0
+		440e-441f + 28 * n (n = 0..14) mcolour1
+		4748-47f7
+		47f8-47ff spritepointer page 1
+		480e-481f + 28 * n (n = 0..14) mcolour2
+		4b48-4bff
+		4c0e-4c1f + 28 * n (n = 0..14) mcolour3
+		4f48-4fff
+		500e-501f + 28 * n (n = 0..14) mcolour4
+		5348-53ff
+		540e-541f + 28 * n (n = 0..14) mcolour5
+		5748-57ff
+		580e-581f + 28 * n (n = 0..14) mcolour6
+		5b48-5bff
+		5c0e-5c1f + 28 * n (n = 0..14) mcolour7
+		5f48-5fff
+		6000-603e sprite 0 layer 0 (row % 8 == 0)
+		     603f padding
+		6040-6100 bitmap
+		6100-613e sprite 1 layer 0 (row % 8 == 0)
+		     613f padding
+		6140-617e sprite 2 layer 0 (row % 8 == 0)
+		     617f padding
+		6180-6240 bitmap
+		6240-627e sprite 3 layer 0 (row % 8 == 0)
+		     627f padding
+		6280-62be sprite 0 layer 1 (row % 8 == 0)
+		     62bf padding
+		62c0-6380 bitmap
+		6380-63be sprite 1 layer 1 (row % 8 == 0)
+		     63bf padding
+		63c0-63fe sprite 2 layer 1 (row % 8 == 0)
+		     63ff padding
+		6400-64c0 bitmap
+		64c0-64fe sprite 3 layer 1 (row % 8 == 0)
+		     64ff padding
+		6500-653e sprite 0 layer 0 (row % 8 == 1)
+		     653f padding
+		6540-6600 bitmap
+		6600-663e sprite 1 layer 0 (row % 8 == 1)
+		     663f padding
+		6640-667e sprite 2 layer 0 (row % 8 == 1)
+		     667f padding
+		6680-6740 bitmap
+		6740-677e sprite 3 layer 0 (row % 8 == 1)
+		     677f padding
+		6780-67be sprite 0 layer 1 (row % 8 == 1)
+		     67bf padding
+		67c0-6880 bitmap
+		6880-68be sprite 1 layer 1 (row % 8 == 1)
+		     68bf padding
+		68c0-68fe sprite 2 layer 1 (row % 8 == 1)
+		     68ff padding
+		6900-69c0 bitmap
+		69c0-69fe sprite 3 layer 1 (row % 8 == 1)
+		     69ff padding
+
+		a8, ac, ad, b1   b2, b6, b7, bb
+		bc, c0, c1, c5   c6, ca, cb, cf
+		d0, d4, d5, d9   da, de, df, e3
+		e4, e8, e9, ea   eb, ec, ed, ee
+		ef, f0, f1, f2   f3, f4, f5, f6
+		f7, 1e, 2e, 3e   4e, 5e, 6e, 7e
+
+		
+SHFLI-XL:
+       support: read
+        plugin: shflixl
+	  mode: hires + sprites
+	suffix: .shfxl
+     64-suffix: <u> 
+	blocks: 61
+	 bytes: 4000-7c00
+	format: 
+		400b-401d + 28 * n (n = 0..14) mcolour0
+		6540-69c0 bitmap
+
+
+Sprite:
+       support: write
+	plugin: sprite
+	  mode: hires/multi
+	suffix: .spr
+     64-prefix: N/A 
+	blocks: N/A
+	 bytes: n * 40
+	format:
+		xx00-xx3e: bitmap
+		     xx3f: padding
+
+
+Super-Hires:
+       support: -
+	plugin: superhires
+	  mode: hires
+	suffix: .sshe1
+     64-suffix: /sshe1
+	blocks: 59
+	 bytes: 4650-7fff
+	format:
+		
+
+Suxx-Editor:
+       support: read/write
+	plugin: suxx
+	  mode: multi
+	suffix: .sux
+     64-prefix: !>
+	blocks: 38
+	 bytes: 5a23/5a24-7f3f
+	format:
+		     5a23: background (optional; default = black)
+		5a24-5c17: colour high + low
+		5c18-5fff: mcolour
+		6000-7f3f: bitmap
+
+
+Twilight Bitmap Editor:
+       support: read/write
+        plugin: twilight
+	  mode: multi
+	suffix: .tbe
+     64-suffix: N/A
+        blocks: 40
+	 bytes: 5800-7f3f
+	format:
+		5800-5be7: colour
+		5be8-5bfe: padding
+		     5bff: background
+		5c00-5fe7: mcolour
+		5fe8-5fff: padding
+		6000-7f3f: bitmap
+	 
+
+Vidcom 64:
+       support: read/write
+	plugin: vidcom64
+	  mode: multi
+	suffix: .vco
+     64-prefix: b.
+	blocks: 40
+	 bytes: 5800-7f3f
+	format:
+		5800-5be7: colour
+		5be8-5bff: padding
+		5c00-5fe7: mcolour
+		5fe8-5fff: padding
+		6000-7f3f: bitmap
+
+HWS:
+	support: write
+	 plugin: hws
+	   mode: hires
+	 suffix: .hws
+      64-prefix: .hws
+	 blocks: ?
+	  bytes: 4000-5f40
+	 format:
+	 	 4000-5f3f: bitmap
+		 5f40-603f: sprite row1, col 1 ($40-54)
+		 6040-613f: sprite row2, col 1 ($55-69)
+		 6140-623f: sprite row3, col 1 ($6a-7e)
+		 6240-633f: sprite row4, col 1 ($7f-93)
+		 6340-643f: sprite row5, col 1 ($94-a8)
+		 6440-653f: sprite row6, col 1 ($a9-bd)
+		 6540-663f: sprite row7, col 1 ($be-d2)
+		 6640-673f: sprite row8, col 1 ($d3-e7)
+		 6740-683f: sprite row9, col 1 ($e8-fc)
+		 6840-693f: sprite row1, col 2 ($40-54)
+		 6940-6a3f: sprite row2, col 2 ($55-69)
+		 6a40-6b3f: sprite row3, col 2 ($6a-7e)
+		 6b40-6c3f: sprite row4, col 2 ($7f-93)
+		 6c40-6d3f: sprite row5, col 2 ($94-a8)
+		 6d40-6e3f: sprite row6, col 2 ($a9-bd)
+		 6e40-6f3f: sprite row7, col 2 ($be-d2)
+		 6f40-703f: sprite row8, col 2 ($d3-e7)
+		 7040-713f: sprite row9, col 2 ($e8-fc)

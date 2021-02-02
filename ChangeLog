@@ -1,0 +1,74 @@
+2005-06-04  David Weinehall  <tao@acc.umu.se>
+
+	* Release 1.2.0.
+
+2005-05-04  David Weinehall  <tao@acc.umu.se>
+
+        * cbmplugs.c: Fix warnings about incorrect pointer types.
+	* cbmplugs.c: Add support for HWS.
+	* cbmplugs.h: Add HWS.
+	* hws.c: New file.
+	* Makefile: Build HWS.
+	* imageformats.txt: Add format description for HWS.
+
+2005-08-31  David Weinehall  <tao@acc.umu.se>
+
+        * Release 1.1.2.
+	* COPYING: new FSF address.
+	* sprite.c: Fix typo.
+	* advartstudio.c, afli.c, artist64.c, artstudio.c, blazingpaddles.c,
+	  cbmplugs.c, cbmplugs.h, drazpaint.c, eafli.c, fli64.c,
+	  imagesystem.c, interpainthires.c, interpaintlores.c,
+	  koala.c, rain.c, shfli.c, shflixl.c, sprite.c, suxx.c,
+	  twilight.c, vidcom64.c: New FSF address, new copyright year.
+	* Makefile: new copyright year.
+
+2004-04-21  David Weinehall  <tao@acc.umu.se>
+
+	* Release 1.1.1.
+	* Makefile: Adapt install-target to latest version of gimptool.
+
+2004-04-08  David Weinehall  <tao@acc.umu.se>
+
+	* Release 1.1.0.
+	* Makefile: Disable compile-time warnings in distributed version.
+	* cbmplugs.c: Fix warnings about unused variables.
+
+2004-04-02  David Weinehall  <tao@acc.umu.se>
+
+	* AUTHORS: New file.
+	* NEWS: New file.
+	* ChangeLog: Renamed CHANGES to ChangeLog and reformatted it
+	  to GNU-style.
+	* FIXME: Deleted file.
+	* TODO: Merged the content of FIXME into this file.
+
+2004-01-13  David Weinehall  <tao@acc.umu.se>
+
+	* Release 1.0.2.
+	* Makefile: Changed gimptool-1.3 to gimptool-2.0 to adapt to
+	  latest changes in libgimp-1.3.
+	* cbmplugs.c: Replace gimp_image_active_drawable with
+	  gimp_image_get_active_drawable.
+	* cbmplugs.h: Added backwards-compability for
+	  gimp_image_get_active_drawable change.
+	* advartstudio.c, afli.c, artist64.c, artstudio.c, blazingpaddles.c,
+	  cbmplugs.c, cbmplugs.h, drazpaint.c, eafli.c, fli64.c,
+	  imagesystem.c, interpainthires.c, interpaintlores.c,
+	  koala.c, rain.c, shfli.c, shflixl.c, sprite.c, suxx.c,
+	  twilight.c, vidcom64.c: Updated copyright information.
+
+2004-08-19  David Weinehall  <tao@acc.umu.se>
+
+	* Release 1.0.1.
+	* advartstudio.c,afli.c, artist64.c, artstudio.c, blazingpaddles.c,
+	  cbmplugs.h, drazpaint.c, eafli.c, fli64.c,
+	  imagesystem.c, interpainthires.c, interpaintlores.c,
+	  koala.c, rain.c, shfli.c, shflixl.c, sprite.c, suxx.c,
+	  twilight.c, vidcom64.c: made the run-header a macro.
+
+2003-01-23  David Weinehall  <tao@acc.umu.se>
+
+	* Initial version.
+
+ChangeLog ends here

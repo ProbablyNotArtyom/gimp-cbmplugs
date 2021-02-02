@@ -1,0 +1,11 @@
+tabell i 3 delar:
+
+tabell 1 lågbyte
+tabell 2 högbyte spritecol
+exp y led
+
+24 tecken till höger
+16 tecken vänster sprites
+spritepekarna i mapparna
+skärmen 24 tecken till höger
+rad $33 börjar sprites + bild

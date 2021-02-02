@@ -1,0 +1,5 @@
+o	The algorithm that calculates background colour may sometimes
+	fail, since it expects the most used colour to be the background
+	colour; for FLI, only the first 24 pixels of every line are checked,
+	since these are usually empty anyway (or possibly gray; if so,
+	you have a problem...)

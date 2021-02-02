@@ -1,0 +1,11 @@
+o	Read/Write support for Amica Paint (needs equal-char unpacker)
+o	Read/write support for Zoomatic
+o	Read support for HWS
+o	Read support for XFLI
+o	Write support for Rain, EAFLI, SHFLI, SHFLI-XL
+	| If plausible
+o	Support for other non-interlaced image-formats
+o	Unify the Rain-support with the rest
+o	Make imageformats.txt reflect the actual formats
+	of SHFLI & SHFLI-XL
+o	Make more use of set_bitmap_pixel and set_sprmap_pixel

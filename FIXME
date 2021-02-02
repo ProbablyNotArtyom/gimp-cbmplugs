@@ -1,0 +1,5 @@
+o	Unify the Rain-support with the rest
+o	Make imageformats.txt reflect the actual formats
+	of SHFLI & SHFLI-XL
+
+o	*** Modify HWS to use 20 lines high sprites instead of 21; duplicate line 21 + line 0 ***
