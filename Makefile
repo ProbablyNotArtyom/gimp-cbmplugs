@@ -49,7 +49,7 @@ PLUGINS	= \
 	rain shfli shflixl sprite suxx twilight vidcom64 hws
 
 PALETTES = \
-	Commodore64.gpl DTV.gpl
+	Commodore64.gpl Commodore64-c64wiki.gpl DTV.gpl
 
 INCLUDES = cbmplugs.c
 HEADERS = cbmplugs.h
